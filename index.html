@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | E-commerce product page</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="product-page">
+      <header class="d-flex">
+        <div class="header d-flex">
+          <div class="header-navbar-section d-flex">
+            <span class="brand-logo">sneakers</span>
+            <nav>
+              <ul class="navbar d-flex">
+                <li class="nav-links">Collections</li>
+                <li class="nav-links">Men</li>
+                <li class="nav-links">Women</li>
+                <li class="nav-links">About</li>
+                <li class="nav-links">Contact</li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header-cart-section d-flex">
+            <div class="cart">
+              <span
+                ><img src="./images/icon-cart.svg" class="cart-logo" alt="cart"
+              /></span>
+              <span class="cart-notification">3</span>
+            </div>
+            <span
+              ><img
+                src="./images/image-avatar.png"
+                class="profile-logo"
+                alt="cart"
+            /></span>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="main-product-section">
+          <div class="product-image-section">
+            <div>
+              <img
+                class="main-image"
+                id="main-image-ID"
+                src="./images/image-product-1.jpg"
+                alt=""
+                name="'mainImg"
+              />
+            </div>
+            <div class="all-images">
+              <img
+                src="./images/image-product-1.jpg"
+                alt=""
+                class="bottom-product-image"
+                onclick="changeImg(this)"
+              />
+              <img
+                src="./images/image-product-2.jpg"
+                alt=""
+                class="bottom-product-image"
+                onclick="changeImg(this)"
+              />
+              <img
+                src="./images/image-product-3.jpg"
+                alt=""
+                class="bottom-product-image"
+                onclick="changeImg(this)"
+              />
+              <img
+                src="./images/image-product-4.jpg"
+                alt=""
+                class="bottom-product-image"
+                onclick="changeImg(this)"
+              />
+            </div>
+          </div>
+          <div class="product-description-section">
+            <p class="product-brand-name">Sneaker Company</p>
+
+            <h2 class="product-name">Fall Limited Edition Sneakers</h2>
+
+            <p class="product-description">
+              These low-profile sneakers are your perfect casual wear companion.
+              Featuring a durable rubber outer sole, they'll withstand
+              everything the weather can offer.
+            </p>
+
+            <div class="product-price-details">
+              <h3 class="product-price">$125.00</h3>
+              <span class="product-price-discount d-flex">50%</span>
+              <span class="product-original-price"
+                ><strike>$250.00</strike></span
+              >
+            </div>
+            <div class="add-product-section d-flex">
+              <div class="product-quantity d-flex">
+                <span id="substract" class="quantity-change-btn" >-</span>
+                <input type="number" name="quantity" id="quantity" value="0" />
+                <span id="add" class="quantity-change-btn" onclick="(quantity.value ++)">+</span>
+              </div>
+              <button class="add-to-cart-btn">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+    <!-- 
+  
+  
+  
+
+  
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+    <script>
+
+      var mainImage = document.getElementById("main-image-ID");
+      var bottomImages= document.querySelectorAll('.bottom-product-image');
+
+      bottomImages.forEach(element => {
+        element.addEventListener('click',()=>{
+          mainImage.src = element.src;
+        })
+      });
+
+      const quantity = document.getElementById("quantity");
+      const add_quantity = document.getElementById("add");
+      const remove_quantity = document.getElementById("substract");
+
+
+      remove_quantity.addEventListener("click", () => {
+        if (quantity.value > 0) {
+          quantity.value -= 1;
+        }
+        else{
+          return
+        }
+      });
+      const addCartBtn = document.querySelector('.add-to-cart-btn');
+      const cartQuantity = document.querySelector('.cart-notification');
+
+      addCartBtn.addEventListener('click',()=>{
+        cartQuantity.innerHTML = quantity.value;
+      })
+      
+    </script>
+  </body>
+</html>
